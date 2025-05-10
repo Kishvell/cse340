@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %>
+</head>
+<body>
+    <header>
+        <%- include('partials/header') %>
+        <%- include('partials/nav') %>
+    </header>
+    
+    <main>
+        <section>
+            <h2>Welcome to CSE Motors</h2>
+            <p>Your trusted car dealership offering the best vehicles for every budget.</p>
+            <img src="/images/cse-motors-banner.jpg" alt="CSE Motors Banner">
+        </section>
+
+        <section id="vehicle-listings">
+            <h2>Available Vehicles</h2>
+            <div id="listings"></div>
+        </section>
+    </main>
+
+    <footer>
+        <%- include('partials/footer') %>
+    </footer>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
