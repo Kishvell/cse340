@@ -1,31 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('partials/head') %>
+    <% include partials/head.ejs %>
 </head>
 <body>
-    <header>
-        <%- include('partials/header') %>
-        <%- include('partials/nav') %>
-    </header>
-    
-    <main>
-        <section>
-            <h2>Welcome to CSE Motors</h2>
-            <p>Your trusted car dealership offering the best vehicles for every budget.</p>
-            <img src="/images/cse-motors-banner.jpg" alt="CSE Motors Banner">
-        </section>
+    <% include partials/header.ejs %>
+    <% include partials/navigation.ejs %>
 
-        <section id="vehicle-listings">
-            <h2>Available Vehicles</h2>
-            <div id="listings"></div>
-        </section>
+    <main>
+        <h1>Welcome to CSE Motors</h1>
+        <p>Your trusted car dealership.</p>
+        <img src="images/motors-engine.webp" alt="CSE Motors">
     </main>
 
-    <footer>
-        <%- include('partials/footer') %>
-    </footer>
-
-    <script src="/js/script.js"></script>
+    <% include partials/footer.ejs %>
 </body>
 </html>
