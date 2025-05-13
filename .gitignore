@@ -1,0 +1,17 @@
+# Each item listed in this file will be ignored by Git
+# and will not be uploaded to GitHub.
+# Blank lines and comments help clarify usage.
+
+# node_modules is a storage folder for Node packages.
+# It can be very large and should not be tracked.
+node_modules
+
+# .env stores sensitive local environment variables.
+# These values should not be shared or committed.
+.env
+
+# .DS_Store is a system file created by macOS and should be ignored.
+**/.DS_Store
+
+# Exclude README.md to remove it from version control.
+README.md
