@@ -29,8 +29,7 @@ async function getInventoryByClassificationId(classification_id) {
 
 /* ***************************
  *  Get inventory and classification data by inv_id
- *  Assignment 3, Task 1
- * ************************** */
+ *   * ************************** */
 async function getInventoryById(invId) {
   try {
     const data = await pool.query(
