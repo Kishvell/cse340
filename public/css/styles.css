@@ -1,46 +1,17 @@
 /************************************************
-CSS Styles for CSE Motors
-
-1. General styles
-   1.0 @imports
-   1.1 Box Model
-   1.2 Universal Styles
-   1.3 Header
-   1.4 Navigation
-   1.5 Body
-   1.6 Footer
-2. Component styles
-    2.1 Hero - Home view
-    2.2 Review - Home view
-    2.3 Add-ons - Home view
-    2.4 Forms
-    2.5 Vehicles - Classification view
-    2.6 Vehicle - Detail view
-3. Media Query
-    3.1 General
-    3.2 Header
-    3.3 Navigation
-    3.4 Hero - Home
-    3.5 Review & Add-on - Home
-    3.6 Vehicles - Classification view
-    3.7 Vehicle - Detail view
-
+/************************************************
+CSS Styles for CSE Motors - Upgraded
 ************************************************/
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Literata:opsz@7..72&display=swap');
 
 /******* 1.1 Change Box Model ***************/
-/*#region*/
 *,
 *:before,
 *:after {
   box-sizing: border-box;
 }
 
-/*#endregion*/
 /******* 1.2 Universal Styles ***************/
-/*#region*/
-
-/* Colors */
 :root {
   --primary-text: #242333;
   --primary-background: #fff;
@@ -55,14 +26,23 @@ CSS Styles for CSE Motors
   --notice-background: yellow;
 }
 
+body {
+  font-family: var(--body-font), sans-serif;
+  margin: 0;
+  line-height: 1.6;
+  color: var(--primary-text);
+  background-color: #fdfdfd;
+}
+
 img {
   max-width: 100%;
 }
 
 h1,
 h2 {
-  font-size: 1.2em;
   font-family: var(--heading-font), serif;
+  font-weight: 700;
+  color: var(--primary-text);
 }
 
 #err {
@@ -76,6 +56,8 @@ h2 {
   font-style: italic;
   padding: 1rem;
   color: var(--primary-text);
+  border-left: 4px solid var(--main-accent);
+  border-radius: 0.3rem;
 }
 
 .success {
@@ -105,28 +87,34 @@ textarea {
 input,
 select {
   font-size: 1.25rem;
-
 }
 
 input[type='Submit'] {
   font-size: larger;
   background-color: var(--main-accent);
   margin: .5rem 0 1rem 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/*#endregion*/
-/************************************************
-   1.3 Header
-************************************************/
-/*#region*/
+input[type='Submit']:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/******* 1.3 Header ***************/
 #top-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
 }
 
 .siteName {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--main-accent);
 }
 
 #tools {
@@ -135,8 +123,12 @@ input[type='Submit'] {
   display: flex;
   width: 20%;
   justify-content: space-evenly;
-  
-  
+  gap: 1rem;
+}
+
+#tools a:hover {
+  color: var(--main-accent);
+  transform: scale(1.1);
 }
 
 header>img {
@@ -154,14 +146,12 @@ header a {
   align-self: center;
 }
 
-/*#endregion*/
-/************************************************
-   1.4 Navigation
-************************************************/
-/*#region*/
+/******* 1.4 Navigation ***************/
 nav {
-  background-color: var(--primary-text);
+  background: linear-gradient(90deg, var(--primary-text), #333);
   color: var(--primary-background);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0;
 }
 
 nav ul {
@@ -174,6 +164,7 @@ nav li {
   list-style: none;
   padding-top: 1em;
   padding-bottom: 1em;
+  text-align: center;
 }
 
 nav a {
@@ -182,19 +173,17 @@ nav a {
   font-size: .85rem;
   padding-top: 1em;
   padding-bottom: 1em;
+  transition: all 0.3s ease;
 }
 
-/*#endregion*/
-/************************************************
-   1.5 body
-************************************************/
-/*#region*/
-body {
-  /* font-family: 'Share Tech Mono', sans-serif; */
-  font-family: var(--body-font), sans-serif;
-  margin: 0;
+nav a:hover {
+  background-color: var(--main-accent);
+  color: var(--primary-background);
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
 }
 
+/******* 1.5 Body ***************/
 #wrapper {
   width: 95%;
   background-color: var(--primary-background);
@@ -203,77 +192,93 @@ body {
   padding-bottom: 1em;
 }
 
-.crash{
+.crash {
   background-color: rgb(248, 224, 228);
   min-height: 400px;
   padding: 1rem;
   background-image: url("../images/site/wreck.jpg");
   background-position: center;
   background-size: cover;
-  background-blend-mode:soft-light;
+  background-blend-mode: soft-light;
   font-weight: 700;
   font-size: x-large;
 }
 
-
-
-/*#endregion*/
-/************************************************
-   1.6 Footer
-************************************************/
-/*#region*/
-footer{
+/******* 1.6 Footer - Matches Nav ***************/
+footer {
   margin-top: 2rem;
+  background: linear-gradient(90deg, var(--primary-text), #333);
+  /* same as nav */
+  color: var(--primary-background);
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 footer p {
   margin: 0;
-  padding: 0;
-  font-size: .9rem;
+  font-size: 0.9rem;
+  text-align: center;
 }
 
-hr {
-  border: 2px solid var(--primary-text);
-  margin: 0;
+footer hr {
+  border: none;
+  height: 2px;
+  width: 80%;
+  background-color: rgba(255, 255, 255, 0.3);
+  margin: 1rem 0;
+  border-radius: 1px;
 }
 
-/*#endregion*/
-/************************************************
-   2. Component Styles
-***********************************************/
+footer .social-links {
+  display: flex;
+  gap: 1rem;
+}
 
-/************************************************
-   2.1 Hero section - home view
-************************************************/
-/*#region*/
+footer .social-links a {
+  color: var(--primary-background);
+  font-size: 1.2rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+footer .social-links a:hover {
+  color: #ffd700;
+  transform: scale(1.2);
+}
+
+footer small {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+/******* 2.1 Hero section ***************/
 #hero {
   background-image: url("/images/vehicles/delorean.jpg");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
-  margin-left: auto;
-  margin-right: auto;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+  min-height: 60vh;
+  background-blend-mode: overlay;
+  background-color: rgba(0, 0, 0, 0.25);
 }
 
 #hero h2 {
   margin-left: 0;
+  color: var(--primary-background);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
 #hero a:hover {
   opacity: .5;
-}
-
-#hero li {
-  list-style: none;
-  color: var(--main-accent);
-
-}
-
-#hero li h2 {
-  margin-top: 0;
-  margin-bottom: 0;
-  color: var(--main-accent);
 }
 
 #hero ul {
@@ -282,58 +287,57 @@ hr {
   max-width: 200px;
   margin-left: .5em;
   margin-bottom: 2rem;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #hero li {
+  list-style: none;
   font-size: .85em;
+  color: var(--main-accent);
+}
+
+#hero li h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: var(--main-accent);
 }
 
 #actionbtn {
   display: inline-block;
-  max-width: 25vw;
+  max-width: 30vw;
   max-height: 10vh;
   padding: .5rem;
   background-color: var(--main-accent);
   color: var(--primary-text);
   font-weight: 800;
-  border-radius: .25rem;
+  border-radius: .5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 #actionbtn:hover {
-  opacity: .5;
+  opacity: .8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* For Delorian list */
-section ul {
-  padding: 0 0 0 1rem;
-}
-
-/*#endregion*/
-
-/************************************************
-   2.2 Review section - home view
-************************************************/
-/*#region*/
+/******* 2.2 Review section ***************/
 #review li {
   font-size: .9em;
   margin-bottom: 1em;
 }
 
-
-
-/*#endregion*/
-/************************************************
-   2.3 Add-on section - home view
-************************************************/
-/*#region*/
+/******* 2.3 Add-on section ***************/
 .flex {
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 2em;
   justify-content: center;
   width: 100%;
   padding-left: .25em;
-
+  gap: 1rem;
 }
 
 .flex a {
@@ -345,6 +349,14 @@ section ul {
   height: 5.5em;
   width: 95%;
   border: var(--primary-text) solid 1px;
+  border-radius: .5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.add-col:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
 a figure {
@@ -361,21 +373,12 @@ figure figcaption {
   text-align: center;
 }
 
-
-
 section {
   margin-bottom: 2em;
   margin-top: 1em;
 }
 
-
-
-/*#endregion*/
-
-/************************************************
-   2.4 Forms 
-************************************************/
-/*#region*/
+/******* 2.4 Forms ***************/
 label+div {
   font-size: .7rem;
   margin-left: .5rem;
@@ -397,33 +400,24 @@ input[name$='Thumbnail'] {
 }
 
 #pswdBtn {
-  width: 9rem;
+  width: 12rem;
   height: 40px;
-  padding: .75rem;
-  border: 1px solid var(--primary-text);
-  background-color: var(--primary-text);
+  padding: .5rem;
+  border: 1px solid #3a3a3a;
+  background-color: #3a3a3a;
   color: #fff;
-  border-radius: 3px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-#loginContainer{
-  max-width: 25rem;
-  margin: 0 auto;
-  padding: 1rem .5rem;
-  background-color: var(--main-accent);
-  font-size: larger;
-  border-radius: .5rem;
-}
-#loginContainer p{
-text-align: center;
-  
-}
-#loginContainer a{
-  font-weight: 700;
-  color: var(--primary-text);
+#pswdBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-#registerContainer{
+#loginContainer,
+#registerContainer {
   max-width: 30rem;
   margin: 0 auto;
   padding: 1rem .5rem;
@@ -432,38 +426,30 @@ text-align: center;
   border-radius: .5rem;
 }
 
-#registerContainer p{
+#loginContainer p,
+#registerContainer p {
+  text-align: center;
+}
+
+#registerContainer p {
   font-style: italic;
   font-variant: small-caps;
 }
-#registerContainer button{
+
+#registerContainer button {
   font-size: larger;
   margin-top: 1rem;
-}
-
-#pswdBtn {
-  width: 12rem;
-  height: 40px;
-  padding: .5rem;
-  border: 1px solid #3a3a3a;
-  background-color: #3a3a3a;
-  color: #fff;
-  border-radius: 20px;
 }
 
 :is(fieldset) input,
 :is(fieldset) div,
 :is(fieldset) span,
 :is(fieldset) textarea,
-:is(fieldset) select{
+:is(fieldset) select {
   margin-bottom: .75rem;
 }
-/*#endregion*/
 
-/************************************************
-   2.5 Vehicles grid - classification view
-************************************************/
-/*#region*/
+/******* 2.5 Vehicles grid ***************/
 #inv-display {
   margin: 0;
   padding: 0;
@@ -477,18 +463,23 @@ text-align: center;
   list-style-type: none;
   flex: 1 1 auto;
   text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#inv-display li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
 }
 
 #inv-display li img {
   object-fit: fill;
+  border-radius: 10px 10px 0 0;
 }
 
-/*#endregion*/
-
-/************************************************
-   2.6 Vehicle  - detail view
-************************************************/
-/*#region*/
+/******* 2.6 Vehicle detail ***************/
 #detail {
   display: flex;
   align-items: start;
@@ -522,37 +513,28 @@ text-align: center;
   background-color: #f5f5f5;
 }
 
-/*#endregion*/
-
-/************************************************
-   2.7 Misc 
-************************************************/
-/*#region*/
-.boldList>li{
+/******* 2.7 Misc ***************/
+.boldList>li {
   font-size: larger;
   margin-bottom: .5rem;
   list-style: none;
 }
 
-#inventoryDisplay{
+#inventoryDisplay {
   margin: 1rem 0;
   font-size: large;
 }
 
-
-/*#endregion*/
+/******* 3. Media Queries ***************/
 @media only screen and (min-width: 768px) {
 
-  /*******************************************
-     3.1 General
-    *******************************************/
-  /*#region*/
+  /******* 3.1 General ***************/
   body {
     background-image:
-      linear-gradient(45deg, #000 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, #000 75%),
-      linear-gradient(45deg, transparent 75%, #000 75%),
-      linear-gradient(45deg, #000 25%, #fff 25%);
+      linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
+      linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
+      linear-gradient(45deg, #f0f0f0 25%, #fff 25%);
     background-size: 100px 100px;
     background-position: 0 0, 0 0, -50px -50px, 50px 50px;
   }
@@ -561,9 +543,10 @@ text-align: center;
     border: 5px solid var(--main-accent);
     border-radius: 10px;
     margin-top: 1rem;
-    padding: 1vw;
+    padding: 2vw;
     width: 75vw;
     max-width: 1200px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
   }
 
   h1 {
@@ -572,12 +555,7 @@ text-align: center;
     grid-column: 1 / 3;
   }
 
-  /*#endregion*/
-  /*******************************************
-     3.2 Header
-    *******************************************/
-  /*#region*/
-
+  /******* 3.2 Header ***************/
   #tools {
     font-size: inherit;
   }
@@ -586,11 +564,7 @@ text-align: center;
     opacity: .5;
   }
 
-  /*#endregion*/
-  /*******************************************
-     3.3 Navigation
-    ********************************************/
-  /*#region*/
+  /******* 3.3 Navigation ***************/
   nav {
     margin-top: .75rem;
   }
@@ -614,20 +588,20 @@ text-align: center;
     font-size: 1rem;
   }
 
-  nav a:hover {
-    color: var(--primary-text);
-    background-color: var(--primary-background);
+  /******* 3.4 Hero ***************/
+  #hero {
+    flex-direction: row;
+    align-items: center;
+    padding: 3rem;
   }
 
-  /*#endregion*/
-  /*******************************************
-     3.4 Hero - Home
-    *******************************************/
-  /*#region*/
+  #hero h2 {
+    font-size: 2rem;
+  }
+
   #hero ul {
-    font-size: 1.6em;
-    margin-left: 2em;
-    margin-top: 1em;
+    font-size: 1.2em;
+    padding: 2rem;
   }
 
   #actionbtn {
@@ -635,17 +609,10 @@ text-align: center;
     width: 90%;
     margin-top: 1.5em;
     padding: 1rem;
-    background-color: var(--main-accent);
-    color: var(--primary-text);
-    font-weight: 800;
     font-size: large;
   }
 
-  /*#endregion*/
-  /*******************************************
-     3.5 Review & Add-on - Home   
-   *******************************************/
-  /*#region*/
+  /******* 3.5 Review & Add-ons ***************/
   .flex-content {
     display: flex;
     justify-content: space-between;
@@ -676,11 +643,7 @@ text-align: center;
     width: 45%;
   }
 
-  /*#endregion*/
-  /*******************************************
-     3.6 Vehicles grid - Classification view   
-     *******************************************/
-  /*#region*/
+  /******* 3.6 Vehicles grid ***************/
   #inv-display {
     flex-flow: row wrap;
     justify-content: space-evenly;
@@ -704,7 +667,7 @@ text-align: center;
   }
 
   #inv-display img {
-    border-radius: 10px 10px;
+    border-radius: 10px 10px 0 0;
   }
 
   #inv-display div {
@@ -712,13 +675,7 @@ text-align: center;
     height: 100px;
   }
 
-  /*#endregion*/
-  /*******************************************
-     3.7 Detail layout - Vehicle Detail view  
-    *******************************************/
-  /*#region*/
-
-
+  /******* 3.7 Vehicle Detail ***************/
   #detail #vehicle-display {
     margin: 0 0 1rem;
   }
@@ -737,5 +694,4 @@ text-align: center;
     object-fit: contain;
   }
 
-  /*#endregion*/
 }
