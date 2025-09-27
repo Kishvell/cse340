@@ -36,6 +36,11 @@ router.post(
  *  Modified in Unit 5, Login Process activity
  *  ******************************** */
 
-
+router.post(
+  "/login",
+  regValidate.loginRules(),
+  regValidate.checkLoginData,
+  utilities.handleErrors(accountController.accountLogin)
+)
 
 module.exports = router
