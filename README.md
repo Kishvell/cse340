@@ -49,3 +49,11 @@ When you installed Git and cloned the remote repository in week 1, you should ha
 1. Go to http://localhost:5500 in a browser tab. Nothing should be visible as the server has not been setup to repond to that route.
 2. Add "/filename.html" to the end of the URL (replacing filename with the name of the file you moved to the public folder).
 3. You should see that page in the browser.
+
+## W05 Account Management
+
+Instructions:
+1. Install: `npm install`
+2. Setup .env with DATABASE_URL, ACCESS_TOKEN_SECRET, SESSION_SECRET
+3. Create DB and run database/build.sql
+4. Start: `npm start`

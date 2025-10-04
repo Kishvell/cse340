@@ -1,0 +1,42 @@
+<%- include('../partials/header') %>
+
+    <main>
+        <h1>Account Management</h1>
+
+        <% if (message && message.length) { %>
+            <div class="message">
+                <%= message %>
+            </div>
+            <% } %>
+
+                <h2>Welcome <%= accountData.account_firstname %>
+                </h2>
+
+                <% if (accountData.account_type==='Employee' || accountData.account_type==='Admin' ) { %>
+                    <h3>Inventory Management</h3>
+                    <p>
+                        <a href="/inventory/manage">Manage Inventory</a>
+                    </p>
+                    <% } %>
+
+                        <p>
+                            <!-- Update Account link always present, id passed -->
+                            <a href="/account/update/<%= accountData.account_id %>">Update account information</a>
+                        </p>
+
+                        <!-- optionally show user attributes -->
+                        <section>
+                            <p><strong>First name:</strong>
+                                <%= accountData.account_firstname %>
+                            </p>
+                            <p><strong>Last name:</strong>
+                                <%= accountData.account_lastname %>
+                            </p>
+                            <p><strong>Email:</strong>
+                                <%= accountData.account_email %>
+                            </p>
+                            <p><strong>Type:</strong>
+                                <%= accountData.account_type %>
+                            </p>
+                        </section>
+    </main>
