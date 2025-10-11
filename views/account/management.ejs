@@ -1,42 +1,27 @@
-<%- include('../partials/header') %>
+<%# Unit 5, Login Process activity
+    Modified further in Unit 5 %>
 
-    <main>
-        <h1>Account Management</h1>
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else { res.redirect('/') } %>
 
-        <% if (message && message.length) { %>
-            <div class="message">
-                <%= message %>
-            </div>
-            <% } %>
+<%- messages() %>
 
-                <h2>Welcome <%= accountData.account_firstname %>
-                </h2>
+<% if (errors) { %>
+<ul class="message warning">
+  <% errors.array().forEach(error => { %>
+  <li><%= error.msg %></li>
+  <%  }) %>
+</ul>
+<% } %>
 
-                <% if (accountData.account_type==='Employee' || accountData.account_type==='Admin' ) { %>
-                    <h3>Inventory Management</h3>
-                    <p>
-                        <a href="/inventory/manage">Manage Inventory</a>
-                    </p>
-                    <% } %>
+<h2>Welcome <%= accountData.account_firstname %> <%= accountData.account_lastname %></h2>
+<h3>Account Type: <%= accountData.account_type  %></h3>
 
-                        <p>
-                            <!-- Update Account link always present, id passed -->
-                            <a href="/account/update/<%= accountData.account_id %>">Update account information</a>
-                        </p>
+<p>You're logged in.</p>
+<a href="/account/update/<%= accountData.account_id %>" title="Click to update your account information">Edit Account Information</a>
 
-                        <!-- optionally show user attributes -->
-                        <section>
-                            <p><strong>First name:</strong>
-                                <%= accountData.account_firstname %>
-                            </p>
-                            <p><strong>Last name:</strong>
-                                <%= accountData.account_lastname %>
-                            </p>
-                            <p><strong>Email:</strong>
-                                <%= accountData.account_email %>
-                            </p>
-                            <p><strong>Type:</strong>
-                                <%= accountData.account_type %>
-                            </p>
-                        </section>
-    </main>
+<% if(accountData.account_type != 'Client'){ %>
+   <h3>Inventory Management</h3>
+<p><a href="/inv/">Manage Inventory</a></p> 
+<% } %>

@@ -1,38 +1,42 @@
 /* ************************************
  *  Account routes
- *  Unit 4/5, Account Management
- * ************************************ */
+ *  Unit 4, deliver login view activity
+ *  ******************************** */
 // Needed Resources
 const express = require("express")
 const router = new express.Router()
 const accountController = require("../controllers/accountController")
 const utilities = require("../utilities")
 const regValidate = require("../utilities/account-validation")
-const jwtAuth = require("../utilities/jwt-middleware") // if you have a JWT auth middleware
 
 /* ************************************
  *  Deliver Login View
- ************************************ */
+ *  Unit 4, deliver login view activity
+ *  ******************************** */
 router.get("/login", utilities.handleErrors(accountController.buildLogin))
 
 /* ************************************
  *  Deliver Registration View
- ************************************ */
+ *  Unit 4, deliver registration view activity
+ *  ******************************** */
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
 
 /* ************************************
  *  Process Registration
- ************************************ */
+ *  Unit 4, process registration activity
+ *  ******************************** */
 router.post(
   "/register",
-  regValidate.registrationRules(),
+  regValidate.registationRules(),
   regValidate.checkRegData,
   utilities.handleErrors(accountController.registerAccount)
 )
 
 /* ************************************
  *  Process Login
- ************************************ */
+ *  Unit 4, stickiness activity
+ *  Modified in Unit 5, Login Process activity
+ *  ******************************** */
 router.post(
   "/login",
   regValidate.loginRules(),
@@ -41,47 +45,53 @@ router.post(
 )
 
 /* ************************************
- * Account Management View
- * Protected route using JWT
- ************************************ */
+ *  Deliver Account Management View
+ *  Unit 5, JWT Authorization activity
+ *  ******************************** */
 router.get(
   "/",
-  jwtAuth,
-  utilities.handleErrors(accountController.buildAccountManagement)
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildManagement)
 )
 
-/* ************************************
- * Deliver Account Update View
- ************************************ */
+
+/* ****************************************
+ *5 /5
+ **************************************** */
 router.get(
-  "/update/:account_id",
-  jwtAuth,
-  utilities.handleErrors(accountController.buildUpdateView)
+  "/update/:id",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildUpdate)
 )
 
-/* ************************************
- * Process Account Update
- ************************************ */
+/* ****************************************
+ *5 -5
+ **************************************** */
 router.post(
   "/update",
-  jwtAuth,
-  regValidate.validateAccountUpdate,
-  utilities.handleErrors(accountController.updateAccount)
+  utilities.checkLogin,
+  regValidate.updateRules(),
+  regValidate.checkEditData,
+  utilities.handleErrors(accountController.processUpdate)
 )
 
-/* ************************************
- * Process Password Change
- ************************************ */
+/* ****************************************
+5-5
+ **************************************** */
 router.post(
-  "/update-password",
-  jwtAuth,
-  regValidate.validatePasswordChange,
-  utilities.handleErrors(accountController.updatePassword)
+  "/password",
+  utilities.checkLogin,
+  regValidate.passwordRule(),
+  regValidate.checkPassword,
+  utilities.handleErrors(accountController.processPassword)
 )
 
-/* ************************************
- * Logout
- ************************************ */
-router.get("/logout", utilities.handleErrors(accountController.logout))
+/* ****************************************
+5-6
+ **************************************** */
+router.get(
+  "/logout",
+  utilities.handleErrors(accountController.accountLogout)
+)
 
 module.exports = router
